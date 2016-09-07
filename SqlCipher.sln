@@ -15,6 +15,9 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SqlCipherTest", "SqlCipherT
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SqlCipher", "SqlCipher\SqlCipher.vcxproj", "{E2D189ED-286E-4C16-B778-88D43E6D1063}"
+	ProjectSection(ProjectDependencies) = postProject
+		{044F3638-F02F-4B56-A9A7-AB67B7E09495} = {044F3638-F02F-4B56-A9A7-AB67B7E09495}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
