@@ -1,6 +1,3 @@
-// SqlCipherTest.cpp : 定义控制台应用程序的入口点。
-//
-
 #include "stdafx.h"
 #include <conio.h> //needed for the getch() to keep the console open
 #include "../src/sqlite3.h"
