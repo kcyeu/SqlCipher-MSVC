@@ -16,6 +16,7 @@ static int callback(void *NotUsed, int argc, char **argv, char **azColName) {
 int _tmain(int argc, _TCHAR* argv[])
 {
     char filename[] = "SqlCipher-linux.db";
+    //char filename[] = "SqlCipher-win.db";
 	sqlite3 *db;
     /*
 	if (sqlite3_open(filename, &db) == SQLITE_OK) {
@@ -35,6 +36,23 @@ int _tmain(int argc, _TCHAR* argv[])
 	}
 	sqlite3_close(db);  //close it up properly
     */
+
+    ///*
+    if (sqlite3_open(filename, &db) == SQLITE_OK) {
+    printf("DB file is open\n");
+    if (sqlite3_exec(db, (const char*)"PRAGMA key ='password'", NULL, NULL, NULL) == SQLITE_OK){
+    printf("Accepted Key\n");
+    };
+    if (sqlite3_exec(db, (const char*)"INSERT INTO testtable (id,name) values (4,'ellen');", NULL, NULL, NULL) == SQLITE_OK) {
+    printf("Gave it some data\n");
+    };
+    if (sqlite3_exec(db, (const char*)"SELECT * FROM testtable;", callback, NULL, NULL) == SQLITE_OK) {
+    printf("Sent Select\n");
+    };
+    }
+    sqlite3_close(db);  //close it up properly
+    //*/
+
     if (sqlite3_open(filename, &db) == SQLITE_OK) {
         printf("DB file is open\n");
         if (sqlite3_exec(db, (const char*)"SELECT * FROM testtable;", callback, NULL, NULL) == SQLITE_OK) {
