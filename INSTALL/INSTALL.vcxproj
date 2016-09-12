@@ -51,11 +51,11 @@
     <PostBuildEvent>
       <Command>xcopy /y $(ProjectDir)..\lib\*.dll "C:\hlx_api\lib\sqlcipher\"
 xcopy /y $(ProjectDir)..\lib\SqlCipher.lib "C:\hlx_api\lib\sqlcipher\"
-xcopy /y $(ProjectDir)..\lib\SqlCipher-static*.lib "C:\hlx_api\lib\sqlcipher\"
-xcopy /y $(ProjectDir)..\lib\sqlite3*.lib "C:\hlx_api\lib\sqlcipher\"
+xcopy /y $(ProjectDir)..\lib\sqlite3.lib "C:\hlx_api\lib\sqlcipher\"
 
 xcopy /y $(ProjectDir)..\src\sqlcipher.h "C:\hlx_api\include\sqlcipher\"
-xcopy /y $(ProjectDir)..\src\sqlite3.h "C:\hlx_api\include\sqlcipher\"</Command>
+xcopy /y $(ProjectDir)..\src\sqlite3.h "C:\hlx_api\include\sqlcipher\"
+</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -74,11 +74,11 @@ xcopy /y $(ProjectDir)..\src\sqlite3.h "C:\hlx_api\include\sqlcipher\"</Command>
     <PostBuildEvent>
       <Command>xcopy /y $(ProjectDir)..\lib\*.dll "C:\hlx_api\lib\sqlcipher\"
 xcopy /y $(ProjectDir)..\lib\SqlCipher.lib "C:\hlx_api\lib\sqlcipher\"
-xcopy /y $(ProjectDir)..\lib\SqlCipher-static*.lib "C:\hlx_api\lib\sqlcipher\"
-xcopy /y $(ProjectDir)..\lib\sqlite3*.lib "C:\hlx_api\lib\sqlcipher\"
+xcopy /y $(ProjectDir)..\lib\sqlite3.lib "C:\hlx_api\lib\sqlcipher\"
 
 xcopy /y $(ProjectDir)..\src\sqlcipher.h "C:\hlx_api\include\sqlcipher\"
-xcopy /y $(ProjectDir)..\src\sqlite3.h "C:\hlx_api\include\sqlcipher\"</Command>
+xcopy /y $(ProjectDir)..\src\sqlite3.h "C:\hlx_api\include\sqlcipher\"
+</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
