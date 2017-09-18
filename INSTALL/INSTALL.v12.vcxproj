@@ -11,23 +11,23 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{55C62549-CA41-4456-BF9C-5976DFAB44B4}</ProjectGuid>
-    <Keyword>Win32Proj</Keyword>
-    <RootNamespace>sqlite3</RootNamespace>
+    <ProjectGuid>{103D07A2-6093-4262-BFE4-66D4ECFA57C7}</ProjectGuid>
+    <RootNamespace>INSTALL</RootNamespace>
+    <ProjectName>INSTALL</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v120</PlatformToolset>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v120</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -39,56 +39,54 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SolutionDir)lib</OutDir>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(SolutionDir)lib</OutDir>
-  </PropertyGroup>
+  <PropertyGroup />
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;SQLITE3_EXPORTS;SQLITE_ENABLE_COLUMN_METADATA;SQLITE_ENABLE_RTREE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ModuleDefinitionFile>sqlite3.def</ModuleDefinitionFile>
     </Link>
+    <PostBuildEvent>
+      <Command>@echo Copy DLLs to Install target
+
+REM xcopy "$(SolutionDir)lib\msvc-$(PlatformToolsetVersion)\*.dll" "$(SolutionDir)build\$(Configuration)\msvc-$(PlatformToolsetVersion)\" /y 
+xcopy "$(SolutionDir)build\$(Configuration)\msvc-$(PlatformToolsetVersion)\*" "C:\hlx_api\lib\sqlcipher\msvc-$(PlatformToolsetVersion)\" /y 
+
+
+xcopy /y $(ProjectDir)..\src\sqlcipher.h "C:\hlx_api\include\sqlcipher\"
+xcopy /y $(ProjectDir)..\src\sqlite3.h "C:\hlx_api\include\sqlcipher\"
+</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;SQLITE3_EXPORTS;SQLITE_ENABLE_COLUMN_METADATA;SQLITE_ENABLE_RTREE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <ModuleDefinitionFile>sqlite3.def</ModuleDefinitionFile>
     </Link>
+    <PostBuildEvent>
+      <Command>@echo Copy DLLs to Install target
+
+REM xcopy "$(SolutionDir)lib\msvc-$(PlatformToolsetVersion)\*.dll" "$(SolutionDir)build\$(Configuration)\msvc-$(PlatformToolsetVersion)\" /y 
+xcopy "$(SolutionDir)build\$(Configuration)\msvc-$(PlatformToolsetVersion)\*" "C:\hlx_api\lib\sqlcipher\msvc-$(PlatformToolsetVersion)\" /y 
+
+
+xcopy /y $(ProjectDir)..\src\sqlcipher.h "C:\hlx_api\include\sqlcipher\"
+xcopy /y $(ProjectDir)..\src\sqlite3.h "C:\hlx_api\include\sqlcipher\"
+</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="sqlite3.h" />
-    <ClInclude Include="sqlite3ext.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="shell.c" />
-    <ClCompile Include="sqlite3.c" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="sqlite3.def" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
